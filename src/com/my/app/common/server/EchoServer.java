@@ -16,7 +16,7 @@ public class EchoServer extends Thread {
 
 	@Override
 	public void run() {
-		byte[] buf = new byte[1024]; // IPv4는 65507 바이트, IPv6 65536 바이트 (64kb)
+		byte[] buf = new byte[1024]; // 64000 바이트 (64kb)
 
 		while (true) {
 			try {

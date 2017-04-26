@@ -39,6 +39,7 @@ public class EchoServer extends Thread {
 			}
 		}
 
+		// 서버에선 socket close 하지 않음
 		// socket.close();
 	}
 

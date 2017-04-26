@@ -33,7 +33,8 @@ public class EchoClient {
     public static void main(String[] args) throws Exception {
     	EchoClient echoClient = new EchoClient();
     	System.out.println(echoClient.sendEcho("hello world"));
-    	System.out.println(echoClient.sendEcho("end"));
+    	System.out.println(echoClient.sendEcho("ㄱㄱㄱㄱ"));
+//    	System.out.println(echoClient.sendEcho("end"));
     	echoClient.close();
 	}
 

@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-public class EchoClient {
+public class EchoClient extends Thread {
     private DatagramSocket socket;
     private InetAddress address;
 
@@ -30,12 +30,28 @@ public class EchoClient {
         socket.close();
     }
 
+    @Override
+    public void run() {
+    	try {
+    		sendEcho("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    		Thread.sleep(500);
+    		sendEcho("ㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄱㄱㄱㄱ");
+    		Thread.sleep(500);
+    		sendEcho("ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ듀ㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠㅠ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+    	close();
+    }
+
     public static void main(String[] args) throws Exception {
-    	EchoClient echoClient = new EchoClient();
-    	System.out.println(echoClient.sendEcho("hello world"));
-    	System.out.println(echoClient.sendEcho("ㄱㄱㄱㄱ"));
-//    	System.out.println(echoClient.sendEcho("end"));
-    	echoClient.close();
+
+    	for (int i = 0; i < 10; i++) {
+    		EchoClient echoClient = new EchoClient();
+    		echoClient.start();
+    	}
+
 	}
 
 }

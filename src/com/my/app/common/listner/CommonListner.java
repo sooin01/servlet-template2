@@ -1,10 +1,12 @@
 package com.my.app.common.listner;
 
+import java.io.IOException;
 import java.net.SocketException;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import com.my.app.common.dao.CommonSqlMapClient;
 import com.my.app.common.server.EchoServer;
 
 public class CommonListner implements ServletContextListener {
@@ -13,6 +15,13 @@ public class CommonListner implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
+		// CommonSqlMapClient 초기화
+		try {
+			CommonSqlMapClient.init();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		try {
 			echoServer = new EchoServer();
 			echoServer.start();

@@ -36,6 +36,16 @@ public class EchoProcess extends Thread {
 			SqlMapClient sqlMapClient = CommonSqlMapClient.getSqlMapClient();
 			List list = sqlMapClient.queryForList("User.getUser");
 
+			try {
+				sqlMapClient.startTransaction();//수동 트랜잭션
+				Object insert1 = sqlMapClient.insert("User.insertUser");
+				Object insert2 = sqlMapClient.insert("User.insertUser");
+				Object insert3 = sqlMapClient.insert("User.insertUser");
+				sqlMapClient.commitTransaction();//수동 트랜잭션
+			} finally {
+				sqlMapClient.endTransaction();//수동 트랜잭션
+			}
+
 			// 클라이언트에 응답 필요없으면 아래 2줄 제거
 			packet = new DatagramPacket(buf, buf.length, packet.getAddress(), packet.getPort());
 			socket.send(packet);

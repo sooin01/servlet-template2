@@ -7,6 +7,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+import com.my.app.common.constant.Constant;
 import com.my.app.common.util.ByteUtil;
 
 public class EchoClient extends Thread {
@@ -19,7 +20,7 @@ public class EchoClient extends Thread {
     }
 
     public String sendEcho(String msg) throws IOException {
-    	byte[] buf = msg.getBytes("MS949");
+    	byte[] buf = msg.getBytes(Constant.MS949_CHARSET);
     	return sendEcho(buf);
     }
 

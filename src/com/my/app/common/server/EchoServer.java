@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import com.my.app.common.constant.Constant;
+
 public class EchoServer extends Thread {
 
 	private DatagramSocket socket;
@@ -67,7 +69,7 @@ public class EchoServer extends Thread {
 	}
 
 	private static void print(byte[] row) throws UnsupportedEncodingException {
-		String received = new String(row, "MS949");
+		String received = new String(row, Constant.MS949_CHARSET);
 		System.out.println("Receive message: [" + received.trim() + "]");
 
 		// 1, 18, 6, 4, 40, 1, 40, 1
@@ -83,7 +85,7 @@ public class EchoServer extends Thread {
 
 	private static void slice(byte[] row, int from, int to) throws UnsupportedEncodingException {
 		byte[] col = Arrays.copyOfRange(row, from, to);
-		System.out.println("Receive message: [" + new String(col, "MS949") + "] (" + col.length + ")");
+		System.out.println("Receive message: [" + new String(col, Constant.MS949_CHARSET) + "] (" + col.length + ")");
 	}
 
 }

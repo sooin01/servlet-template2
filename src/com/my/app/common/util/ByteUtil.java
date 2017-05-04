@@ -22,7 +22,7 @@ public class ByteUtil {
 		// start 1
 		baos.write(rPad("'", 1));
 		// header 18
-		baos.write(rPad(idx+"", 18));
+		baos.write(rPad(idx + "", 18));
 		// body
 		baos.write(rPad("123456", 6));
 		baos.write(rPad("9999", 4));

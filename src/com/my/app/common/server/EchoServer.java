@@ -46,19 +46,19 @@ public class EchoServer extends Thread {
 	}
 
 	private void process(byte[] buf, DatagramPacket packet) throws IOException {
-		List<byte[]> dataList = new ArrayList<byte[]>();
+		List<byte[]> rowList = new ArrayList<byte[]>();
 		byte[] src = packet.getData();
 		int index = 0;
 
 		while (index < packet.getLength()) {
 			byte[] dest = new byte[111];
 			System.arraycopy(src, index, dest, 0, dest.length);
-			dataList.add(dest);
+			rowList.add(dest);
 			index += dest.length;
 		}
 
-		for (byte[] bs : dataList) {
-			print(bs);
+		for (byte[] row : rowList) {
+			print(row);
 		}
 
 		// 클라이언트에 응답 필요없으면 아래 2줄 제거
@@ -82,8 +82,8 @@ public class EchoServer extends Thread {
 	}
 
 	private static void slice(byte[] row, int from, int to) throws UnsupportedEncodingException {
-		byte[] col1 = Arrays.copyOfRange(row, from, to);
-		System.out.println("Receive message: [" + new String(col1, "MS949") + "] (" + col1.length + ")");
+		byte[] col = Arrays.copyOfRange(row, from, to);
+		System.out.println("Receive message: [" + new String(col, "MS949") + "] (" + col.length + ")");
 	}
 
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
+import com.my.app.common.constant.Constant;
+
 public class ByteUtil {
 
 	public static byte[] getDataList() throws IOException {
@@ -35,7 +37,7 @@ public class ByteUtil {
 	}
 
 	private static byte[] rPad(String str, int size) throws UnsupportedEncodingException {
-		byte[] src = str.getBytes("MS949");
+		byte[] src = str.getBytes(Constant.MS949_CHARSET);
 		byte[] dest = new byte[size];
 		Arrays.fill(dest, (byte) 32);
 		System.arraycopy(src, 0, dest, 0, src.length);

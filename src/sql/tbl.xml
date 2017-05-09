@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.my.app.tbl.dao.TblDao">
+
+	<typeAlias alias="tblVo" type="com.my.app.tbl.vo.TblVo" />
+
+	<select id="getTbl" parameterClass="tblVo" resultClass="tblVo">
+		select a.code,
+		       a.name,
+		       a.price,
+		       a.recv_dt
+		  from tbl a
+		 where code = #code#
+	</select>
+
+	<update id="updateTbl" parameterClass="tblVo">
+		update tbl
+		set name = #name#, price = #price#, recv_dt = #recv_dt#
+		where code = #code#
+	</update>
+
+</sqlMap>

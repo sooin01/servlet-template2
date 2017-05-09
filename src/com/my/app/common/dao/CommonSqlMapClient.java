@@ -12,8 +12,13 @@ public class CommonSqlMapClient {
 	private static SqlMapClient sqlmapClient;
 
 	public static void init() throws IOException {
-		Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");
-		sqlmapClient = SqlMapClientBuilder.buildSqlMapClient(reader);
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			Reader reader = Resources.getResourceAsReader("SqlMapConfig.xml");
+			sqlmapClient = SqlMapClientBuilder.buildSqlMapClient(reader);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static SqlMapClient getSqlMapClient() {

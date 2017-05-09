@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+
+	<Resource name="jdbc/HJF_DS"
+    	global="jdbc/HJF_DS"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="org.mariadb.jdbc.Driver"
+		url="jdbc:mariadb://192.168.0.11:3306/test"
+		username="test"
+		password="admin123"
+		maxActive="100"
+		maxIdle="20"
+		minIdle="5"
+		maxWait="10000" />
+
+</Context>

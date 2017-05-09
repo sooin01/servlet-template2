@@ -22,17 +22,22 @@ public class DefaultServletHandler extends HttpServlet {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 
+		JsonObject jsonObject = new JsonObject();
+
 		try {
 			if (request.getRequestURI().equals("/tbl/update-tbl")) {
 				TblController.getInstance().updateTbl();
 			}
+
+			jsonObject.addProperty("ErrorCode", "000000");
+			jsonObject.addProperty("ErrorMessage", "Success.");
 		} catch (Exception e) {
 			e.printStackTrace();
+
+			jsonObject.addProperty("ErrorCode", "999999");
+			jsonObject.addProperty("ErrorMessage", "Fail: " + e.getMessage());
 		}
 
-		JsonObject jsonObject = new JsonObject();
-		jsonObject.addProperty("ErrorCode", "000000");
-		jsonObject.addProperty("ErrorMessage", "Success.");
 		response.getWriter().println(new Gson().toJson(jsonObject));
 		response.getWriter().flush();
 	}

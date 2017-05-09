@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.my.app.tbl.controller.TblController;
 
 public class DefaultServletHandler extends HttpServlet {
@@ -27,6 +29,12 @@ public class DefaultServletHandler extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		JsonObject jsonObject = new JsonObject();
+		jsonObject.addProperty("ErrorCode", "000000");
+		jsonObject.addProperty("ErrorMessage", "Success.");
+		response.getWriter().println(new Gson().toJson(jsonObject));
+		response.getWriter().flush();
 	}
 
 }

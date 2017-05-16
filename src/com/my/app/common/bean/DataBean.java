@@ -22,4 +22,9 @@ public class DataBean {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "DataBean [id=" + id + ", name=" + name + "]";
+	}
+
 }

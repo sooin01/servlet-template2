@@ -7,8 +7,8 @@
 <script type="text/javascript" src="/resources/js/jquery/jquery-1.2.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	$("#selectTable").click(function() {
-		$.get("/jsp/db/db1.jsp", {name: "Korea"}, function(data) {
+	$("#tbl1").click(function() {
+		$.get("/jsp/db/db1.jsp", {name: "Republic of Korea"}, function(data) {
 			$("#db1").html(data);
 		});
 	});
@@ -17,15 +17,27 @@ $(function() {
 </head>
 <body>
 
+<h4>jQuery 방식</h4>
 <div>
 	테이블목록:
-	<select id="tableList">
+	<select id="tblList">
 		<option value="user">user</option>
 	</select>
-	<button id="selectTable">눌러</button>
+	<button id="tbl1">눌러</button>
 </div>
-
 <div id="db1"></div>
+
+<br><br><br>
+
+<h4>iFrame 방식</h4>
+<form action="/jsp/db/db1.jsp" target="tbl2">
+	테이블목록:
+	<select id="tblList">
+		<option value="user">user</option>
+	</select>
+	<input type="submit" value="눌러">
+</form>
+<iframe name="tbl2" frameborder="0" height="100%" width="100%"></iframe>
 
 </body>
 </html>

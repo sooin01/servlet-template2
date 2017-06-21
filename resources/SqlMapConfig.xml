@@ -3,6 +3,8 @@
 	"http://www.ibatis.com/dtd/sql-map-config-2.dtd">
 <sqlMapConfig>
 
+	<properties resource="jdbc.properties" />
+
 	<settings
 		cacheModelsEnabled="true"
 		enhancementEnabled="true"
@@ -14,7 +16,7 @@
 
 	<transactionManager type="JDBC">
 		<dataSource type="JNDI">
-			<property name="DataSource" value="java:comp/env/jdbc/HJF_DS" />
+			<property name="DataSource" value="java:comp/env/jdbc/${dataSource}" />
 		</dataSource>
 	</transactionManager>
 

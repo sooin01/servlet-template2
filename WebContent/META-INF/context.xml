@@ -13,5 +13,18 @@
 		maxIdle="20"
 		minIdle="5"
 		maxWait="10000" />
+	
+	<Resource name="jdbc/HJF_DS2"
+    	global="jdbc/HJF_DS"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="org.postgresql.Driver"
+		url="jdbc:postgresql://localhost:5432/test"
+		username="test"
+		password="admin123"
+		maxActive="100"
+		maxIdle="20"
+		minIdle="5"
+		maxWait="10000" />
 
 </Context>

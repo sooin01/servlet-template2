@@ -14,7 +14,7 @@ public class CommonListner implements ServletContextListener {
 	private EchoServer echoServer;
 
 	@Override
-	public void contextInitialized(ServletContextEvent arg0) {
+	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		// CommonSqlMapClient 초기화
 		try {
 			CommonSqlMapClient.init();
@@ -32,7 +32,7 @@ public class CommonListner implements ServletContextListener {
 	}
 
 	@Override
-	public void contextDestroyed(ServletContextEvent arg0) {
+	public void contextDestroyed(ServletContextEvent servletContextEvent) {
 		if (echoServer != null && echoServer.isAlive()) {
 			echoServer.interrupt();
 		}
